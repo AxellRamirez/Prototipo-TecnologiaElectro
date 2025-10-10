@@ -5,3 +5,4 @@ link: https://www.figma.com/design/N9oxoeqs43LtBkkncDKmGx/prototipo-proyecto?nod
 actualizacion 02:31
 actualizacion 3:38
 actualizacion 08:21
+actualizacion 09:51
