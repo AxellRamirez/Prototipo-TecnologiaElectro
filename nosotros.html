@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologia Electro | Misión y Visión</title>
+    <!-- Carga de Tailwind CSS para el estilo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Incluyendo Lucide Icons para los elementos de las tarjetas y el logo -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Usando 'Inter' como la fuente predeterminada (similar a Space Grotesk) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0E1212; /* Color de fondo muy oscuro */
+            color: white;
+            overflow-x: hidden;
+            padding-top: 64px; /* Espacio para el Navbar fijo */
+        }
+
+        /* Clases de utilidad para los colores de borde */
+        .border-primary { border-color: #00E0FF; } /* Azul Neon (del diseño) */
+        .border-secondary { border-color: #631653; } /* Púrpura (del diseño) */
+
+        /* ---------------------------------- */
+        /* 1. Animación de Carga (Fade In Up) */
+        /* DURACIÓN AUMENTADA A 1.5s */
+        /* ---------------------------------- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        /* ---------------------------------- */
+        /* 2. Efectos Hover en Tarjetas */
+        /* ---------------------------------- */
+        .card-pillar {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 0 transparent; /* Sombra inicial transparente */
+        }
+        
+        /* Hover para Misión y Valores (Borde azul) */
+        .card-pillar.border-primary:hover {
+            box-shadow: 0 0 25px rgba(0, 224, 255, 0.5), 0 0 10px rgba(0, 224, 255, 0.2);
+            transform: translateY(-2px); /* Ligeramente elevado */
+        }
+
+        /* Hover para Visión (Borde púrpura) */
+        .card-pillar.border-secondary:hover {
+            box-shadow: 0 0 25px rgba(99, 22, 83, 0.7), 0 0 10px rgba(99, 22, 83, 0.3);
+            transform: translateY(-2px); /* Ligeramente elevado */
+        }
+
+        /* Hover para Hitos Clave (Borde púrpura) */
+        .card-hitos {
+            transition: box-shadow 0.3s ease;
+        }
+        .card-hitos:hover {
+            box-shadow: 0 0 20px rgba(99, 22, 83, 0.7), 0 0 5px rgba(99, 22, 83, 0.3);
+        }
+        
+        /* Contenedor de Iconos para asegurar superposición y mismo tamaño */
+        .icon-container {
+            position: relative;
+            width: 40px; /* Tamaño fijo de 40x40px */
+            height: 40px; /* Tamaño fijo de 40x40px */
+        }
+        .icon-container > i {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#0E1212',
+                        'accent-primary': '#00D6FF',
+                        'accent-blue-neon': '#00E0FF', /* Usado para bordes */
+                        'accent-secondary-purple': '#631653', /* Usado para bordes */
+                        'text-faded': '#99B5BD',
+                        'button-primary-bg': '#00D6FF',
+                    },
+                    fontSize: {
+                        '5xl-custom': ['3rem', { lineHeight: '3.75rem' }],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar (Fijo y en la capa superior) -->
+    <header class="w-full fixed top-0 left-0 z-50 bg-bg-dark/95 backdrop-blur-sm border-b border-gray-700/50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="zap" class="w-5 h-5 text-accent-primary"></i>
+                <span class="text-lg font-extrabold text-white">Tecnologia Electro</span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="sericios.html" class="text-white hover:text-accent-primary transition">Servicios</a>
+                <a href="tienda.html" class="text-white hover:text-accent-primary transition">Tienda</a>
+                <a href="Sac.html" class="text-white hover:text-accent-primary transition">SAC</a>
+                <a href="nosotros.html" class="text-white hover:text-accent-primary transition">Nosotros</a>
+                <a href="contacto.html" class="text-white hover:text-accent-primary transition">Contacto</a>
+                <a href="clientes.html" class="text-white hover:text-accent-primary transition">Clientes</a>
+                <!-- Botón de Cotización -->
+                <a href="contacto.html" class="px-4 py-2 bg-accent-primary text-bg-dark font-bold text-sm rounded-lg shadow-lg hover:bg-accent-primary/90 transition duration-300">
+                    Solicitar Cotización
+                </a>
+            </nav>
+            <button class="md:hidden text-white">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full flex-grow">
+        
+        <!-- Sección Principal (Nuestra Visión Cero Errores) -->
+        <!-- Aplicando la animación de 1.5s -->
+        <section id="about-us-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 animate-fade-in-up">
+
+            <!-- Títulos Centrales -->
+            <div class="text-center mb-16">
+                <h2 class="text-2xl font-extrabold text-white mb-2">Nuestra Visión Cero Errores</h2>
+                <div class="inline-block px-4 py-1 border-4 border-accent-blue-neon">
+                    <h1 class="text-5xl font-extrabold text-white leading-tight">Tecnología de Misión Crítica para el Futuro</h1>
+                </div>
+            </div>
+
+            <!-- Slogan Descriptivo -->
+            <div class="text-center mb-12 max-w-5xl mx-auto">
+                <p class="text-xl font-bold text-white leading-relaxed">
+                    Desde hace una década, somos el socio estratégico de las corporaciones más exigentes, garantizando operatividad y blindaje digital 24/7.
+                </p>
+            </div>
+
+            <!-- Botón de Contacto -->
+            <div class="flex justify-center mb-20">
+                <a href="#" class="px-10 py-4 bg-button-primary-bg text-bg-dark font-extrabold text-xl rounded-lg shadow-xl hover:bg-button-primary-bg/90 transition duration-300">
+                    Contactanos
+                </a>
+            </div>
+
+            <!-- Pilares de Nuestra Operación (Misión, Visión, Valores) -->
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-extrabold text-white">Pilares de Nuestra Operación</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                
+                <!-- Tarjeta 1: Misión (Azul) -->
+                <div class="card-pillar p-6 rounded-3xl border-2 border-primary bg-transparent flex flex-col items-start cursor-pointer group"
+                     data-icon-default="rocket" data-icon-hover="bolt">
+                    <!-- Icon Container con posición relativa -->
+                    <div class="icon-container mb-4 transition duration-300 text-accent-blue-neon group-hover:text-white">
+                        <i data-lucide="rocket" class="icon-default"></i>
+                        <i data-lucide="bolt" class="icon-hover hidden"></i>
+                    </div>
+                    <h4 class="text-3xl font-extrabold text-white mb-4">Misión</h4>
+                    <p class="text-base font-bold text-white leading-relaxed">
+                        Proveer soluciones tecnológicas inquebrantables, asegurando la continuidad y eficiencia operativa de nuestros clientes bajo cualquier circunstancia crítica.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 2: Visión (Púrpura) -->
+                <div class="card-pillar p-6 rounded-3xl border-2 border-secondary bg-transparent flex flex-col items-start cursor-pointer group"
+                     data-icon-default="eye" data-icon-hover="globe-2">
+                    <!-- Icon Container con posición relativa -->
+                    <div class="icon-container mb-4 transition duration-300 text-accent-secondary-purple group-hover:text-white">
+                        <i data-lucide="eye" class="icon-default"></i>
+                        <i data-lucide="globe-2" class="icon-hover hidden"></i>
+                    </div>
+                    <h4 class="text-3xl font-extrabold text-white mb-4">Visión</h4>
+                    <p class="text-base font-bold text-white leading-relaxed">
+                        Ser el referente global en resiliencia digital y servicios de alta disponibilidad, anticipando y neutralizando las amenazas tecnológicas del mañana.
+                    </p>
+                </div>
+                
+                <!-- Tarjeta 3: Valores (Azul) -->
+                <div class="card-pillar p-6 rounded-3xl border-2 border-primary bg-transparent flex flex-col items-start cursor-pointer group"
+                     data-icon-default="gem" data-icon-hover="trophy">
+                    <!-- Icon Container con posición relativa -->
+                    <div class="icon-container mb-4 transition duration-300 text-accent-blue-neon group-hover:text-white">
+                        <i data-lucide="gem" class="icon-default"></i>
+                        <i data-lucide="trophy" class="icon-hover hidden"></i>
+                    </div>
+                    <h4 class="text-3xl font-extrabold text-white mb-4">Valores</h4>
+                    <ul class="text-base font-bold text-white leading-relaxed list-disc pl-5 space-y-2">
+                        <li>Integridad Absoluta</li>
+                        <li>Innovación Constante</li>
+                        <li>Responsabilidad 24/7</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Hitos Clave y Evolución (Caja Púrpura) -->
+            <div class="card-hitos p-10 rounded-3xl border-2 border-secondary bg-transparent transition duration-300">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <!-- Columna Izquierda: Historia -->
+                    <div class="flex flex-col space-y-6">
+                        <p class="text-base font-bold text-white leading-loose">
+                            Fundados en **2014**, comenzamos como un pequeño equipo de ingenieros obsesionados con la **redundancia y la seguridad**.
+                        </p>
+                        <p class="text-base font-bold text-white leading-loose">
+                            Hoy, somos líderes en la entrega de soluciones donde el margen de error es cero. Nuestra evolución ha sido impulsada por la necesidad constante de nuestros clientes de contar con infraestructuras que no fallen, desde sistemas de videovigilancia avanzados hasta complejas redes de fibra óptica privada. Cada proyecto es un testamento de nuestro compromiso con la excelencia.
+                        </p>
+                    </div>
+
+                    <!-- Columna Derecha: Hitos -->
+                    <div>
+                        <h4 class="text-3xl font-extrabold text-white mb-6">Hitos Clave</h4>
+                        <ul class="text-base font-bold text-white leading-loose space-y-2 list-disc pl-5">
+                            <li>**2016: Expansión Regional**</li>
+                            <li>Apertura del segundo centro de operaciones, triplicando la capacidad de soporte 24/7.</li>
+                            <li>**2020: Adopción de IA**</li>
+                            <li>Lanzamiento de nuestra plataforma propietaria para el monitoreo predictivo de redes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-8 border-t border-gray-800 mt-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center px-4 sm:px-6 lg:px-8 text-text-faded text-sm space-y-3 md:space-y-0">
+            
+            <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 items-center">
+                <a href="#" class="hover:text-accent-primary transition">Política de Privacidad</a>
+                <span class="text-center">
+                    &copy; 2025 Tecnologia Electro. Todos los derechos reservados.
+                </span>
+            </div>
+
+            <!-- Iconos sociales -->
+            <div class="flex space-x-4">
+                <a href="#" aria-label="Twitter">
+                    <i data-lucide="twitter" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <i data-lucide="facebook" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+            </div>
+            
+        </div>
+    </footer>
+    
+    <!-- Script para inicializar los iconos de Lucide y la Lógica de Hover de Iconos -->
+    <script>
+        // Inicializa los iconos de Lucide
+        lucide.createIcons();
+
+        // Lógica de Hover de Iconos para Pilares
+        document.querySelectorAll('.card-pillar').forEach(card => {
+            // Busca los iconos dentro del contenedor de iconos
+            const iconContainer = card.querySelector('.icon-container');
+            const defaultIcon = iconContainer.querySelector('.icon-default');
+            const hoverIcon = iconContainer.querySelector('.icon-hover');
+
+            if (defaultIcon && hoverIcon) {
+                // Al pasar el cursor
+                card.addEventListener('mouseenter', () => {
+                    defaultIcon.classList.add('hidden');
+                    hoverIcon.classList.remove('hidden');
+                    // Vuelve a inicializar el icono de hover para darle el color y tamaño adecuado
+                    lucide.createIcons({ element: hoverIcon });
+                });
+
+                // Al quitar el cursor
+                card.addEventListener('mouseleave', () => {
+                    defaultIcon.classList.remove('hidden');
+                    hoverIcon.classList.add('hidden');
+                    // Vuelve a inicializar el icono por defecto al salir (por si acaso)
+                    lucide.createIcons({ element: defaultIcon });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

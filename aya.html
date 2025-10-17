@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso de Estudio: AyA - Tecnologia Electro</title>
+    <!-- Carga de Tailwind CSS para el estilo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Incluyendo Lucide Icons para los elementos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Usando 'Inter' como la fuente predeterminada y ajustando el fondo oscuro */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0E1212; /* Color de fondo muy oscuro */
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Colores de acento definidos en la configuración de Tailwind */
+        
+        /* ---------------------------------- */
+        /* ANIMACIONES DE CARGA (Fade In Up)  */
+        /* ---------------------------------- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0; 
+        }
+
+        /* ---------------------------------- */
+        /* Estilos de Iconos Personalizados   */
+        /* ---------------------------------- */
+        .icon-svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #00E0FF; /* Azul neón */
+            stroke-width: 2.5;
+            transition: stroke 0.3s;
+        }
+        
+        /* Ajuste para el logo AYA (manteniendo el espacio para la imagen) */
+        .aya-logo-placeholder {
+            width: 310px;
+            height: 310px;
+            background-color: #1C2629; /* Color de fondo similar a las tarjetas */
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px dashed #00E0FF;
+            text-align: center;
+            font-size: 16px;
+            color: #00E0FF;
+            box-shadow: 23px 26px 4px rgba(0, 0, 0, 0.25);
+        }
+
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#0E1212',
+                        'card-bg': '#1C2629', /* Fondo de tarjetas */
+                        'accent-blue': '#00E0FF', /* Borde azul */
+                        'accent-purple': '#6E158C', /* Borde morado */
+                        'text-faded': '#99B5BD', /* Color para footer */
+                        'button-cotizacion': '#00D6FF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Contenedor Principal (simula 1440px) -->
+    <div class="w-full max-w-[1440px] px-5 md:px-10 mx-auto flex flex-col min-h-screen">
+
+        <!-- 1. Navbar (Animación 1) -->
+        <header class="w-full h-[64px] border-b border-gray-700/50 bg-bg-dark/95 flex justify-between items-center py-4 z-50 animate-fade-in-up" style="animation-delay: 0.1s;">
+            <div class="flex items-center space-x-4">
+                <i data-lucide="scan" class="w-5 h-5 text-accent-blue"></i>
+                <span class="text-lg font-extrabold text-white">Tecnologia Electro</span>
+            </div>
+            <nav class="flex items-center space-x-8 text-sm font-medium">
+                <div class="hidden md:flex space-x-8">
+                <a href="sericios.html" class="text-white hover:text-accent-primary transition">Servicios</a>
+                <a href="tienda.html" class="text-white hover:text-accent-primary transition">Tienda</a>
+                <a href="Sac.html" class="text-white hover:text-accent-primary transition">SAC</a>
+                <a href="nosotros.html" class="text-white hover:text-accent-primary transition">Nosotros</a>
+                <a href="contacto.html" class="text-white hover:text-accent-primary transition">Contacto</a>
+                <a href="clientes.html" class="text-white hover:text-accent-primary transition">Clientes</a>
+                <!-- Botón de Cotización -->
+                <a href="contacto.html" class="px-4 py-2 bg-accent-primary text-bg-dark font-bold text-sm rounded-lg shadow-lg hover:bg-accent-primary/90 transition duration-300">
+                    Solicitar Cotización
+                </a>
+            </nav>
+        </header>
+
+        <!-- 2. Contenido Principal -->
+        <main class="flex-grow w-full py-16">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-20 mb-20">
+                
+                <!-- Columna de Texto Principal -->
+                <div class="lg:col-span-2 space-y-8 animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-white">
+                        Página web para el <span class="text-accent-blue">AyA</span>
+                    </h1>
+                    <p class="text-xl leading-relaxed text-gray-300">
+                        Tecnologías Electro Integral se asoció con AyA para desarrollar una plataforma web avanzada que mejorara la eficiencia operativa y la experiencia del usuario. Este proyecto abarcó desde el diseño conceptual hasta la implementación completa, integrando tecnologías de vanguardia para cumplir con los desafíos específicos de AyA.
+                    </p>
+                </div>
+
+                <!-- Columna de Imagen/Logo (Animación 2) -->
+                <div class="lg:col-span-1 flex justify-center lg:justify-end animate-fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="aya-logo-placeholder p-4 text-white text-3xl font-bold">
+                        <!-- ESPACIO PARA EL LOGO/IMAGEN DEL AyA -->
+                        <img src="fotos/aya.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Bloque de Tarjetas de Soluciones (4 columnas en escritorio) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8 mb-20">
+                
+                <!-- Tarjeta 1: La Solución Implementada (Animación 3) -->
+                <div class="p-6 md:p-8 bg-card-bg border-2 border-accent-blue rounded-xl flex flex-col space-y-4 shadow-xl shadow-accent-blue/10 animate-fade-in-up" style="animation-delay: 0.7s;">
+                    <i data-lucide="home" class="icon-svg text-accent-blue"></i>
+                    <h3 class="text-xl font-bold text-white leading-tight">La Solución Implementada</h3>
+                    <p class="text-base text-gray-300">
+                        Tecnologías Electro desarrolló una solución a medida que incluía un diseño web responsivo, una arquitectura de información clara y una integración con sistemas existentes. Se implementaron tecnologías como **React** para el frontend y **Node.js** para el backend, asegurando un rendimiento y una escalabilidad óptimos.
+                    </p>
+                </div>
+                
+                <!-- Tarjeta 2: Quién es el AyA? (Animación 3) -->
+                <!-- Nota: Esta tarjeta tiene el borde morado, como en el diseño original -->
+                <div class="p-6 md:p-8 bg-card-bg border-2 border-accent-purple rounded-xl flex flex-col space-y-4 shadow-xl shadow-accent-purple/10 animate-fade-in-up" style="animation-delay: 0.7s;">
+                    <i data-lucide="user-check" class="icon-svg text-accent-blue" style="stroke: #00E0FF;"></i>
+                    <h3 class="text-xl font-bold text-white leading-tight">Quién es el AyA?</h3>
+                    <p class="text-base text-gray-300">
+                        AyA es una empresa líder en el sector de energía, comprometida con la innovación y la sostenibilidad. Buscaban modernizar su presencia digital para reflejar su liderazgo y ofrecer un mejor servicio a sus clientes.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 3: El Desafío (Animación 4) -->
+                <div class="p-6 md:p-8 bg-card-bg border-2 border-accent-blue rounded-xl flex flex-col space-y-4 shadow-xl shadow-accent-blue/10 animate-fade-in-up" style="animation-delay: 0.9s;">
+                    <i data-lucide="zap" class="icon-svg text-accent-blue"></i>
+                    <h3 class="text-xl font-bold text-white leading-tight">El Desafío</h3>
+                    <p class="text-base text-gray-300">
+                        AyA enfrentaba desafíos en la gestión de la información y la comunicación con sus clientes. Su plataforma existente carecía de la flexibilidad y las funcionalidades necesarias para adaptarse a las demandas del mercado y ofrecer una experiencia de usuario óptima.
+                    </p>
+                </div>
+                
+                <!-- Tarjeta 4: Resultados e Impacto (Animación 4) -->
+                <!-- Nota: Esta tarjeta tiene el borde morado, como en el diseño original -->
+                <div class="p-6 md:p-8 bg-card-bg border-2 border-accent-purple rounded-xl flex flex-col space-y-4 shadow-xl shadow-accent-purple/10 animate-fade-in-up" style="animation-delay: 0.9s;">
+                    <i data-lucide="trending-up" class="icon-svg text-accent-blue" style="stroke: #00E0FF;"></i>
+                    <h3 class="text-xl font-bold text-white leading-tight">Resultados e Impacto</h3>
+                    <p class="text-base text-gray-300">
+                        La nueva plataforma web resultó en un **aumento del 40%** en la satisfacción del cliente, una **reducción del 25%** en los tiempos de respuesta a consultas y una **mejora del 30%** en la eficiencia operativa. Estos resultados demuestran el impacto positivo de la solución implementada.
+                    </p>
+                </div>
+                
+            </div>
+            
+            <!-- 4. Sección de CTA Final (Animación 5) -->
+            <div class="w-full py-16 md:py-24 flex flex-col items-center justify-center space-y-8 animate-fade-in-up" style="animation-delay: 1.1s;">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center max-w-2xl">
+                    ¿Listo para transformar tu negocio?
+                </h2>
+                <a href="contacto.html" class="px-8 py-3 bg-accent-blue text-bg-dark font-bold text-lg rounded-lg shadow-2xl shadow-accent-blue/50 hover:bg-accent-blue/90 transition duration-300">
+                    Contactanos
+                </a>
+            </div>
+
+        </main>
+        
+        <!-- Footer (Animación 6) -->
+        <footer class="w-full py-4 border-t border-gray-700/50 flex flex-col md:flex-row justify-between items-center text-sm text-text-faded animate-fade-in-up" style="animation-delay: 1.3s;">
+            <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 items-center">
+                <a href="#" class="hover:text-accent-blue transition">Política de Privacidad</a>
+                <span class="text-gray-600 hidden md:inline">|</span>
+                <span class="text-center md:text-left">© 2025 Tecnologia Electro. Todos los derechos reservados.</span>
+            </div>
+            
+            <!-- Iconos Sociales -->
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <a href="#" aria-label="Twitter">
+                    <i data-lucide="twitter" class="w-5 h-5 text-text-faded hover:text-accent-blue transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5 text-text-faded hover:text-accent-blue transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <i data-lucide="instagram" class="w-5 h-5 text-text-faded hover:text-accent-blue transition cursor-pointer"></i>
+                </a>
+            </div>
+        </footer>
+
+    </div>
+    
+    <!-- Script para inicializar los iconos de Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

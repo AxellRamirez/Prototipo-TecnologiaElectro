@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- NOTA: Se mantiene el viewport, pero el layout interno es fijo (1440px) por solicitud del usuario. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Cámara Hikvision - Turbo HD 5MP</title>
+    <!-- Carga de Tailwind CSS para el estilo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Incluyendo Lucide Icons para los elementos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Usando 'Inter' como la fuente predeterminada (similar a Space Grotesk) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0E1212; /* Color de fondo muy oscuro */
+            color: white;
+            /* Permite centrar el contenedor fijo de 1440px en pantallas más grandes */
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        /* Contenedor principal fijo de 1440x1334px para replicar el layout absoluto */
+        #fixed-container {
+            width: 1440px;
+            height: 1334px;
+            position: relative;
+            background-color: #0E1212;
+            overflow: hidden; /* Oculta cualquier desbordamiento fuera del área de 1440x1334 */
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); /* Sombra para resaltar el área de trabajo */
+        }
+
+        /* ---------------------------------- */
+        /* 1. Animación de Carga (Fade In Up) */
+        /* ---------------------------------- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1.5s ease-out forwards;
+            opacity: 0; 
+        }
+
+        /* ---------------------------------- */
+        /* 2. Efecto Hover en Tarjetas (Sombra) */
+        /* ---------------------------------- */
+        .box-product-details {
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* Sombra Púrpura */
+        .box-product-details.shadow-purple:hover {
+            box-shadow: 0 0 40px rgba(110, 21, 140, 0.9);
+            transform: translateY(-2px);
+        }
+
+        /* Sombra Azul Neon */
+        .box-product-details.shadow-neon:hover {
+            box-shadow: 0 0 40px rgba(0, 214, 255, 0.9);
+            transform: translateY(-2px);
+        }
+        
+        /* ---------------------------------- */
+        /* 3. Estilos de Botones y Notificación */
+        /* ---------------------------------- */
+        .button-add {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 224, 255, 0.5);
+        }
+        .button-add:hover {
+            box-shadow: 0 8px 25px rgba(0, 224, 255, 0.9);
+            transform: translateY(-1px);
+        }
+
+        /* Clase para ocultar/mostrar el mensaje */
+        #notification {
+            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        #notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#0E1212',
+                        'accent-primary': '#00D6FF', /* Azul Neon */
+                        'accent-secondary-purple': '#6E158C', /* Púrpura */
+                        'text-faded': '#99B5BD',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Contenedor Fijo de 1440px x 1334px -->
+    <div id="fixed-container">
+
+        <!-- 1. Navbar (Posición absoluta replicada) -->
+        <header class="absolute w-[1431px] h-[64px] left-[9px] top-[16px] border-b border-gray-700/50 bg-bg-dark/95 flex justify-between items-center px-10 z-50 animate-fade-in-up" style="animation-delay: 0.1s;">
+            <div class="flex items-center space-x-4">
+                <i data-lucide="scan" class="w-5 h-5 text-accent-primary"></i>
+                <span class="text-lg font-extrabold text-white">Tecnologia Electro</span>
+            </div>
+            <nav class="flex items-center space-x-8 text-sm font-medium">
+                <a href="sericios.html" class="text-white hover:text-accent-primary transition">Servicios</a>
+                <a href="tienda.html" class="text-white hover:text-accent-primary transition">Tienda</a>
+                <a href="Sac.html" class="text-white hover:text-accent-primary transition">SAC</a>
+                <a href="nosotros.html" class="text-white hover:text-accent-primary transition">Nosotros</a>
+                <a href="contacto.html" class="text-white hover:text-accent-primary transition">Contacto</a>
+                <a href="clientes.html" class="text-white hover:text-accent-primary transition">Clientes</a>
+                <!-- Botón de Cotización -->
+                <a href="contacto.html" class="px-4 py-2 bg-accent-primary text-bg-dark font-bold text-sm rounded-lg shadow-lg hover:bg-accent-primary/90 transition duration-300">
+                    Solicitar Cotización
+                </a>
+            </nav>
+        </header>
+
+        <!-- 2. Título de Navegación -->
+        <div class="absolute left-[91px] top-[169px] animate-fade-in-up" style="animation-delay: 0.2s;">
+            <h1 class="text-5xl font-light text-white leading-6">Tienda / <span class="font-bold">Cámaras de Vigilancia</span></h1>
+        </div>
+
+        <!-- 3. Imagen del Producto -->
+        <div class="absolute w-[500px] h-[500px] left-[65px] top-[247px] p-4 animate-fade-in-up" style="animation-delay: 0.3s;">
+            <img src="fotos/camara tienda.jpg" alt="Cámara Hikvision" class="w-full h-full object-cover rounded-lg shadow-2xl">
+        </div>
+
+        <!-- 4. Panel de Compra (Caja con borde neon) -->
+        <div class="absolute w-[501px] h-[564px] left-[901px] top-[247px] p-6 rounded-xl border-4 border-accent-primary bg-[#16183B]/70 box-product-details shadow-neon animate-fade-in-up" style="animation-delay: 0.4s;">
+            <!-- Contenido del Panel de Compra - Posiciones relativas a la caja padre -->
+            <div class="relative h-full">
+                <!-- Título Producto (ajustado al padding de 24px) -->
+                <h2 class="absolute left-[29px] top-[34px] text-2xl font-normal text-white leading-9">Cámara Hikvision - Turbo HD 5MP</h2> 
+                
+                <!-- Descripción Producto -->
+                <p class="absolute left-[33px] top-[78px] text-xl font-normal text-text-faded leading-9">Bala 2.8mm EXIR 20m Metal IP67</p>
+
+                <!-- Precio -->
+                <p class="absolute left-[29px] top-[177px] text-5xl font-normal text-white leading-9">$39 USD <span class="text-xl font-normal text-gray-400">+ IVA</span></p>
+                
+                <!-- Separador (Línea) -->
+                <div class="absolute left-[33px] top-[224px] w-[387px] border-t border-white/50"></div>
+
+                <!-- Cantidad Label -->
+                <label for="quantity" class="absolute left-[33px] top-[272px] text-base font-normal text-white leading-9">Cantidad:</label>
+                
+                <!-- Input de Cantidad (Simulado para que se vea como en la maqueta) -->
+                <div class="absolute left-[29px] top-[323px] w-[107px] h-[37px] rounded-lg bg-gray-600 flex justify-center items-center">
+                    <input type="number" id="quantity" value="1" min="1" 
+                           class="w-full h-full bg-transparent text-white text-center text-xl font-normal rounded-lg border-none focus:ring-0"
+                           style="line-height: 34px; padding: 0;">
+                </div>
+                
+                <!-- Botón Añadir al carrito -->
+                <button id="addToCartBtn" class="button-add absolute left-[43px] top-[441px] w-[404px] h-[72px] bg-accent-primary text-black font-extrabold text-3xl rounded-xl flex items-center justify-center space-x-3 transition duration-300">
+                    <i data-lucide="shopping-cart" class="w-8 h-8"></i>
+                    <span>Añadir al carrito</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 5. Detalles y Tecnología (Caja Púrpura) -->
+        <div class="absolute w-[661px] h-[330px] left-[91px] top-[867px] p-8 rounded-2xl border-4 border-accent-secondary-purple bg-[#16183B]/70 box-product-details shadow-purple animate-fade-in-up" style="animation-delay: 0.5s;">
+            <div class="relative">
+                <!-- Título (Posición absoluta original + ajuste de padding) -->
+                <h2 class="absolute left-[23px] top-[-69px] text-5xl font-normal text-white leading-6">Detalles y Tecnología</h2> 
+
+                <!-- Texto (Posición absoluta original + ajuste de padding) -->
+                <p class="absolute left-[9px] top-[25px] text-base font-normal leading-relaxed text-white w-[640px]">
+                    La cámara Hikvision Turbo HD 5MP es la solución ideal para vigilancia de alta
+                    definición. Diseñada para entornos exigentes, ofrece una calidad de imagen nítida
+                    de 5 megapíxeles y un diseño de bala metálica resistente a la intemperie **(IP67)**.
+                    Incorpora la tecnología **EXIR** para una visión nocturna superior, cubriendo hasta 20
+                    metros con luz infrarroja uniforme. Es compatible con formatos HD-
+                    TVI/AHD/CVI/CVBS, asegurando una integración fluida en la mayoría de los sistemas
+                    de videovigilancia existentes.
+                </p>
+            </div>
+        </div>
+
+        <!-- 6. Especificaciones Clave (Caja Neon) -->
+        <div class="absolute w-[438px] h-[297px] left-[961px] top-[910px] p-6 rounded-xl border-3 border-accent-primary bg-[#16183B]/70 box-product-details shadow-neon animate-fade-in-up" style="animation-delay: 0.6s;">
+             <div class="relative h-full">
+                <!-- Título (Posición absoluta original + ajuste de padding) -->
+                <h3 class="absolute left-[16px] top-[28px] text-2xl font-normal text-white leading-9 border-b border-gray-700 w-[90%] pb-3">Especificaciones Clave</h3>
+                
+                <!-- Lista de Especificaciones (Ajustadas a posición absoluta con iconos) -->
+                <ul class="absolute left-[29px] top-[102px] space-y-2 text-xl w-full">
+                    <li class="flex items-start">
+                        <i data-lucide="camera" class="w-6 h-6 mr-3 text-accent-primary flex-shrink-0"></i>
+                        <span><span class="font-medium">Resolución:</span> 5 Megapíxeles (2560x1944)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="maximize-2" class="w-6 h-6 mr-3 text-accent-primary flex-shrink-0"></i>
+                        <span><span class="font-medium">Lente:</span> Fijo 2.8mm (Amplio)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="moon" class="w-6 h-6 mr-3 text-accent-primary flex-shrink-0"></i>
+                        <span><span class="font-medium">Visión Nocturna:</span> IR EXIR hasta 20m</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="shield" class="w-6 h-6 mr-3 text-accent-primary flex-shrink-0"></i>
+                        <span><span class="font-medium">Resistencia:</span> IP67 (Metal, exterior)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 7. Footer - Derechos y Política -->
+        <div class="absolute left-[279px] top-[1295px] text-text-faded text-base leading-6 animate-fade-in-up" style="animation-delay: 0.7s;">
+            © 2025 Tecnologia Electro. Todos los derechos reservados.
+        </div>
+        <div class="absolute left-[245px] top-[1297px] text-text-faded text-base leading-6 border-r border-text-faded pr-4 mr-2 animate-fade-in-up" style="animation-delay: 0.7s;">
+            Política de Privacidad
+        </div>
+
+        <!-- 8. Footer - Iconos Sociales (Simulando la posición original con un contenedor flexible interno) -->
+        <div class="absolute left-[640px] top-[1295px] w-[920px] flex justify-end space-x-4 items-start text-text-faded text-sm animate-fade-in-up" style="animation-delay: 0.8s;">
+            <a href="#" aria-label="Twitter">
+                <i data-lucide="twitter" class="w-6 h-6 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+            </a>
+            <a href="#" aria-label="Facebook">
+                <i data-lucide="facebook" class="w-6 h-6 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <i data-lucide="linkedin" class="w-6 h-6 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+            </a>
+        </div>
+        
+    </div>
+
+    <!-- Notificación Flotante (Agregado correctamente) - Mantenida como fixed para que se vea en cualquier scroll/posición -->
+    <div id="notification" class="fixed bottom-0 right-0 m-4 p-4 rounded-lg bg-green-600 text-white font-bold shadow-xl flex items-center space-x-2 z-50">
+        <i data-lucide="check-circle" class="w-5 h-5"></i>
+        <span>¡Agregado correctamente!</span>
+    </div>
+    
+    <!-- Script para inicializar los iconos de Lucide y la funcionalidad del carrito -->
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToCartBtn = document.getElementById('addToCartBtn');
+            const notification = document.getElementById('notification');
+            let timeoutId;
+
+            // Función para mostrar la notificación
+            const showNotification = () => {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+
+                notification.classList.add('show');
+
+                timeoutId = setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            };
+
+            // Listener para el botón de añadir al carrito
+            addToCartBtn.addEventListener('click', showNotification);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conéctate con Nuestro Ecosistema</title>
+    <!-- Carga de Tailwind CSS para el estilo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Incluyendo Lucide Icons para los elementos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Usando 'Inter' como la fuente predeterminada y ajustando el fondo oscuro */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0E1212; /* Color de fondo muy oscuro */
+            color: white;
+            /* Centrar el contenedor de diseño fijo de 1440px */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Contenedor principal para mantener el ancho de 1440px y simular el layout */
+        #main-wrapper {
+            width: 1440px;
+            min-height: 100vh;
+            padding: 0 50px; /* Padding para evitar que el contenido toque los bordes */
+            box-sizing: border-box;
+        }
+
+        /* ---------------------------------- */
+        /* 1. Animación de Carga (Fade In Up) */
+        /* ---------------------------------- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1.5s ease-out forwards;
+            opacity: 0; 
+        }
+
+        /* Ajustes de retraso para los distintos bloques */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.5s; }
+        .delay-4 { animation-delay: 0.7s; }
+
+        /* ---------------------------------- */
+        /* 2. Estilos de Cajas de Contacto y Hover */
+        /* ---------------------------------- */
+        .contact-box {
+            transition: all 0.4s ease-in-out;
+            border: 2px solid transparent; /* Base para el borde */
+        }
+
+        /* Estilo base del borde (Azul Neon) */
+        .contact-box.border-neon {
+            border-color: #00D6FF; /* Azul Neon */
+        }
+
+        /* Efecto hover con sombra neon */
+        .contact-box:hover {
+            box-shadow: 0 0 30px rgba(0, 214, 255, 0.7);
+            transform: translateY(-5px); /* Pequeño levantamiento */
+        }
+        
+        /* Estilos para el texto resaltado (Azul Neon) */
+        .text-neon {
+            color: #00D6FF;
+        }
+
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#0E1212',
+                        'accent-primary': '#00D6FF', /* Azul Neon */
+                        'text-faded': '#99B5BD',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        // Nota: Se usó 'Inter' ya que 'Space Grotesk' y 'Souliyo Unicode' no son estándar de Tailwind/Google Fonts.
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Contenedor Principal de 1440px -->
+    <div id="main-wrapper">
+
+        <!-- 1. Navbar -->
+        <header class="w-full h-[64px] border-b border-gray-700/50 bg-bg-dark/95 flex justify-between items-center px-10 z-50 animate-fade-in-up delay-1">
+            <div class="flex items-center space-x-4">
+                <i data-lucide="scan" class="w-5 h-5 text-accent-primary"></i>
+                <span class="text-lg font-extrabold text-white">Tecnologia Electro</span>
+            </div>
+            <nav class="flex items-center space-x-8 text-sm font-medium">
+                <a href="sericios.html" class="text-white hover:text-accent-primary transition">Servicios</a>
+                <a href="tienda.html" class="text-white hover:text-accent-primary transition">Tienda</a>
+                <a href="Sac.html" class="text-white hover:text-accent-primary transition">SAC</a>
+                <a href="nosotros.html" class="text-white hover:text-accent-primary transition">Nosotros</a>
+                <a href="contacto.html" class="text-white hover:text-accent-primary transition">Contacto</a>
+                <a href="clientes.html" class="text-white hover:text-accent-primary transition">Clientes</a>
+                <!-- Botón de Cotización -->
+                <a href="contacto.html" class="px-4 py-2 bg-accent-primary text-bg-dark font-bold text-sm rounded-lg shadow-lg hover:bg-accent-primary/90 transition duration-300">
+                    Solicitar Cotización
+                </a>
+            </nav>
+        </header>
+
+        <!-- Contenido principal alineado con la estructura original (Margen superior de 100px desde el navbar) -->
+        <main class="mt-28 w-full"> 
+            
+            <!-- Bloque de Título y Frase -->
+            <div class="flex justify-between items-start mb-24 animate-fade-in-up delay-2">
+                <!-- Título (Izquierda) -->
+                <div class="w-1/3">
+                    <h1 class="text-6xl font-normal leading-tight">
+                        <span class="text-neon">Conéctate</span> con <br>
+                        Nuestro <br>
+                        Ecosistema
+                    </h1>
+                </div>
+
+                <!-- Frase (Derecha) -->
+                <div class="w-2/3 flex justify-end">
+                    <p class="text-3xl font-normal leading-loose text-white mt-4 italic">
+                        "Soporte rápido, soluciones precisas. Tu tranquilidad es nuestro algoritmo."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bloque de Imagen y Texto Introductorio -->
+            <div class="flex gap-20 mb-28 items-center animate-fade-in-up delay-3">
+                <!-- Texto Introductorio (Izquierda) -->
+                <div class="w-1/3">
+                    <p class="text-lg font-normal leading-relaxed text-white">
+                        Elige tu canal preferido. Nuestro equipo de asistencia técnica está disponible 
+                        a través de diversas plataformas para asegurar que recibas la ayuda que 
+                        necesitas, cuando la necesitas.
+                    </p>
+                </div>
+                
+                <!-- Imagen (Derecha) - Usando una imagen placeholder similar a la maqueta -->
+                <div class="w-2/3">
+                    <img src="fotos/imagen soporte.jpg" 
+                         alt="Equipo de soporte técnico con auriculares" 
+                         class="w-full h-auto object-cover rounded-xl shadow-2xl">
+                </div>
+            </div>
+
+            <!-- Grid de Cajas de Contacto (Manteniendo la estructura de 2x2 de la maqueta) -->
+            <div class="grid grid-cols-2 gap-x-20 gap-y-16 max-w-[1200px] mx-auto animate-fade-in-up delay-4">
+
+                <!-- 1. Instagram -->
+                <a id="instagram-box" href="https://www.instagram.com/tecnologiaelectro?igsh=MTdibHYweWpjbTE2cg==" target="_blank" class="contact-box border-neon rounded-xl p-8 cursor-pointer bg-black/30">
+                    <div class="flex items-center space-x-6 mb-4">
+                        <!-- Icono Instagram con color de acento -->
+                        <i data-lucide="instagram" class="w-10 h-10 text-accent-primary"></i> 
+                        <h2 class="text-4xl font-semibold text-white">Instagram</h2>
+                    </div>
+                    <p class="text-lg text-white mb-2">Síguenos para novedades y noticias.</p>
+                    <p class="text-lg text-white font-medium underline">@tecnologiaelectro</p>
+                    <!-- COMENTARIO IMPORTANTE: Sustituye el href de la etiqueta 'a' de arriba con tu link de Instagram. -->
+                </a>
+
+                <!-- 2. Ubicación -->
+                <a id="location-box" href="https://maps.app.goo.gl/pThhAhnDidBZSBjc8" target="_blank" class="contact-box border-neon rounded-xl p-8 cursor-pointer bg-black/30">
+                    <div class="flex items-center space-x-6 mb-4">
+                        <!-- Icono Ubicación (Map Pin) con color de acento -->
+                        <i data-lucide="map-pin" class="w-10 h-10 text-accent-primary"></i> 
+                        <h2 class="text-4xl font-semibold text-white">Ubicación</h2>
+                    </div>
+                    <p class="text-lg text-white mb-2">Para visitas y contacto</p>
+                    <p class="text-lg text-white font-medium">Tecnologiaelectro Soluciones Integrales Jaaz. Cartago, Oreamuno.</p>
+                    <!-- COMENTARIO IMPORTANTE: Sustituye el href de la etiqueta 'a' de arriba con el link a Google Maps o tu dirección. -->
+                </a>
+
+                <!-- 3. WhatsApp -->
+                <a id="whatsapp-box" href="https://wa.me/50689632051" target="_blank" class="contact-box border-neon rounded-xl p-8 cursor-pointer bg-black/30">
+                    <div class="flex items-center space-x-6 mb-4">
+                        <!-- Icono WhatsApp (Phone) con color de acento -->
+                        <i data-lucide="phone-call" class="w-10 h-10 text-accent-primary"></i> 
+                        <h2 class="text-4xl font-semibold text-white">WhatsApp</h2>
+                    </div>
+                    <p class="text-lg text-white mb-2">Soporte instantáneo y mensajes rápidos.</p>
+                    <p class="text-lg text-white font-medium">8963-2051</p>
+                    <!-- COMENTARIO IMPORTANTE: Sustituye el href de la etiqueta 'a' de arriba con tu link de WhatsApp. -->
+                </a>
+
+                <!-- 4. Gmail -->
+                <a id="gmail-box" href="mailto:jalvarado@tecnologiaelectro.cr" target="_blank" class="contact-box border-neon rounded-xl p-8 cursor-pointer bg-black/30">
+                    <div class="flex items-center space-x-6 mb-4">
+                        <!-- Icono Gmail (Mail) con color de acento -->
+                        <i data-lucide="mail" class="w-10 h-10 text-accent-primary"></i> 
+                        <h2 class="text-4xl font-semibold text-white">Gmail</h2>
+                    </div>
+                    <p class="text-lg text-white mb-2">Para consultas detalladas o documentación.</p>
+                    <p class="text-lg text-white font-medium underline">jalvarado@tecnologiaelectro.cr</p>
+                    <!-- COMENTARIO IMPORTANTE: Sustituye el href de la etiqueta 'a' de arriba con tu dirección de correo electrónico. -->
+                </a>
+            </div>
+
+        </main>
+        
+        <!-- Footer -->
+        <footer class="w-full mt-28 mb-4 border-t border-gray-700/50 pt-4 flex justify-between items-center text-sm text-text-faded animate-fade-in-up delay-4">
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-accent-primary transition">Política de Privacidad</a>
+                <span class="text-gray-600">|</span>
+                <span>© 2025 Tecnologia Electro. Todos los derechos reservados.</span>
+            </div>
+            
+            <!-- Iconos Sociales -->
+            <div class="flex space-x-4">
+                <a href="#" aria-label="Twitter">
+                    <i data-lucide="twitter" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <i data-lucide="facebook" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+            </div>
+        </footer>
+
+    </div>
+    
+    <!-- Script para inicializar los iconos de Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

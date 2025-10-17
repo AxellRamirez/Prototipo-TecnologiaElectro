@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologia Electro | Soluciones Integrales</title>
+    <!-- Carga de Tailwind CSS para el estilo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Incluyendo Lucide Icons para los elementos de las tarjetas y el logo -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Usando 'Inter' como la fuente predeterminada (similar a Space Grotesk) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0E1212; /* Color de fondo muy oscuro */
+            color: white;
+            /* Se necesita overflow-x-hidden para evitar la barra horizontal al escalar la imagen de fondo */
+            overflow-x: hidden;
+        }
+
+        /* Colores de acento según la maqueta */
+        .ring-primary { --tw-ring-color: #00D6FF; } /* Azul Eléctrico */
+        .ring-secondary { --tw-ring-color: #6E158C; } /* Púrpura/Magenta */
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#0E1212',
+                        'card-bg': '#1C2629',
+                        'accent-primary': '#00D6FF',
+                        'accent-secondary': '#6E158C',
+                        'text-faded': '#99B5BD',
+                        'button-secondary-bg': '#26383B',
+                    },
+                    fontSize: {
+                        '5xl-custom': ['3rem', { lineHeight: '3.75rem' }],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar (Fijo y en la capa superior) -->
+    <header class="w-full fixed top-0 left-0 z-50 bg-bg-dark/95 backdrop-blur-sm border-b border-gray-700/50">
+        <div class="max-w-7xl mx-auto flex jdustify-between items-center py-4 px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="zap" class="w-5 h-5 text-accent-primary"></i>
+                <span class="text-lg font-extrabold text-white">Tecnologia Electro</span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="sericios.html" class="text-white hover:text-accent-primary transition">Servicios</a>
+                <a href="tienda.html" class="text-white hover:text-accent-primary transition">Tienda</a>
+                <a href="Sac.html" class="text-white hover:text-accent-primary transition">SAC</a>
+                <a href="nosotros.html" class="text-white hover:text-accent-primary transition">Nosotros</a>
+                <a href="contacto.html" class="text-white hover:text-accent-primary transition">Contacto</a>
+                <a href="clientes.html" class="text-white hover:text-accent-primary transition">Clientes</a>
+                <!-- Botón de Cotización -->
+                <a href="contacto.html" class="px-4 py-2 bg-accent-primary text-bg-dark font-bold text-sm rounded-lg shadow-lg hover:bg-accent-primary/90 transition duration-300">
+                    Solicitar Cotización
+                </a>
+            </nav>
+            <button class="md:hidden text-white">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full flex-grow">
+        
+        <!-- Hero Section (Pantalla Completa) -->
+        <section id="hero-section" class="relative w-full h-screen overflow-hidden flex items-center">
+            
+            <!-- Contenedor de la Imagen de Fondo (Se anima con JS) -->
+            <div id="hero-image-container" class="absolute inset-0 z-0">
+                <!-- RUTA DE IMAGEN SOLICITADA: "Index, foto superior.jpg" -->
+                <img id="hero-image" class="w-full h-full object-cover will-change-transform" 
+                     src="fotos/Index, foto superior.jpg" 
+                     onerror="this.onerror=null;this.src='Index, foto superior.jpg';" 
+                     alt="Fondo de electrónica y tecnología"
+                     style="transition: transform 0.1s ease-out, filter 0.1s ease-out;">
+                <!-- Degradado de superposición para mejorar la legibilidad del texto -->
+                <div class="absolute inset-0 bg-gradient-to-r from-bg-dark/40 to-bg-dark/70"></div>
+            </div>
+            
+            <!-- Contenido del Hero (Texto y Botones) -->
+            <div id="hero-content" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-end justify-between w-full" style="padding-top: 100px; padding-bottom: 80px; transition: opacity 0.2s ease-out;">
+                 <div class="max-w-2xl">
+                    <h1 class="text-4xl sm:text-5xl-custom font-extrabold text-white leading-tight mb-4">
+                        Innovando el Futuro de la Electrónica
+                    </h1>
+                    <p class="text-base text-white font-medium mb-8 max-w-lg">
+                        Soluciones integrales para un mundo conectado y eficiente. En ElectroTech Solutions, combinamos experiencia y visión para ofrecer tecnologías de vanguardia que impulsan el progreso.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                     <a href="contacto.html" class="inline-flex justify-center items-center px-5 py-3 bg-accent-primary text-bg-dark font-bold text-base rounded-lg shadow-2xl hover:bg-accent-primary/90 transition duration-300">
+                        Solicitar Cotización
+                    </a>
+                     <a href="sericios.html" class="inline-flex justify-center items-center px-5 py-3 bg-button-secondary-bg text-white font-bold text-base rounded-lg shadow-2xl hover:bg-button-secondary-bg/80 transition duration-300">
+                        Explorar Servicios
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenido Principal: Historia y Proyectos/Servicios (Comienza justo después de la sección Hero) -->
+        <!-- Se añaden estilos iniciales para la animación de aparición: opacidad 0 y movido 20px hacia abajo -->
+        <div id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 pt-16 pb-20" style="opacity: 0; transform: translateY(20px); transition: opacity 0.2s ease-out, transform 0.2s ease-out;">
+
+            <!-- Columna Izquierda: Historia y Servicios Destacados -->
+            <div class="lg:col-span-2 space-y-12">
+                
+                <!-- Sección Historia -->
+                <section>
+                    <h2 class="text-xl md:text-2xl font-extrabold text-white mb-4">
+                        Nuestra Historia
+                    </h2>
+                    <p class="text-base text-white leading-relaxed max-w-4xl">
+                        Desde nuestros inicios, **Tecnologia Electro** ha estado a la vanguardia de la innovación tecnológica. Fundada por un equipo de ingenieros visionarios, nuestra empresa ha evolucionado para convertirse en un líder en soluciones electrónicas integrales. Nos enorgullece nuestra trayectoria de excelencia y nuestro compromiso con la calidad y la satisfacción del cliente. A lo largo de los años, hemos ampliado nuestra oferta de servicios para abarcar desde el diseño de sistemas eléctricos hasta la implementación de soluciones de energía renovable, siempre adaptándonos a las necesidades cambiantes del mercado.
+                    </p>
+                </section>
+
+                <!-- Sección Servicios Destacados -->
+                <section>
+                    <h2 class="text-xl md:text-2xl font-extrabold text-white mb-6">
+                        Servicios Destacados
+                    </h2>
+                    
+                    <!-- Tarjetas de Servicio (4 en un grid adaptable) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <!-- Tarjeta 1: Diseño de Sistemas Electricos (Azul) -->
+                        <div class="p-6 rounded-lg ring-2 ring-accent-primary bg-card-bg flex flex-col space-y-3 hover:shadow-lg transition duration-300">
+                            <i data-lucide="plug" class="w-6 h-6 text-white flex-shrink-0"></i>
+                            <h3 class="text-lg font-bold text-white leading-tight">Diseño de Sistemas Electricos</h3>
+                            <p class="text-sm text-text-faded leading-relaxed">Creamos sistemas eléctricos a medida para diversas industrias, optimizando rendimiento y eficiencia.</p>
+                        </div>
+                        
+                        <!-- Tarjeta 2: Automatización Industrial (Púrpura) -->
+                        <div class="p-6 rounded-lg ring-2 ring-accent-secondary bg-card-bg flex flex-col space-y-3 hover:shadow-lg transition duration-300">
+                            <i data-lucide="cpu" class="w-6 h-6 text-white flex-shrink-0"></i>
+                            <h3 class="text-lg font-bold text-white leading-tight">Automatización Industrial</h3>
+                            <p class="text-sm text-text-faded leading-relaxed">Implementamos sistemas de automatización para mejorar la productividad y reducir costos operativos.</p>
+                        </div>
+                        
+                        <!-- Tarjeta 3: Soluciones para el Hogar Inteligente (Azul) -->
+                        <div class="p-6 rounded-lg ring-2 ring-accent-primary bg-card-bg flex flex-col space-y-3 hover:shadow-lg transition duration-300">
+                            <i data-lucide="home" class="w-6 h-6 text-white flex-shrink-0"></i>
+                            <h3 class="text-lg font-bold text-white leading-tight">Soluciones para el Hogar Inteligente</h3>
+                            <p class="text-sm text-text-faded leading-relaxed">Transformamos hogares en espacios inteligentes con tecnología de punta para mayor confort y seguridad.</p>
+                        </div>
+                        
+                        <!-- Tarjeta 4: Energías Renovables (Azul) -->
+                        <div class="p-6 rounded-lg ring-2 ring-accent-primary bg-card-bg flex flex-col space-y-3 hover:shadow-lg transition duration-300">
+                            <i data-lucide="sun" class="w-6 h-6 text-white flex-shrink-0"></i>
+                            <h3 class="text-lg font-bold text-white leading-tight">Energías Renovables</h3>
+                            <p class="text-sm text-text-faded leading-relaxed">Ofrecemos soluciones de energía solar y eólica para un futuro sostenible y energéticamente eficiente.</p>
+                        </div>
+                        
+                    </div>
+                </section>
+            </div>
+
+            <!-- Columna Derecha: Proyectos Recientes -->
+            <div class="lg:col-span-1 border-t lg:border-t-0 lg:border-l border-gray-700/50 pt-8 lg:pt-0 lg:pl-10">
+                <section class="space-y-8">
+                    <h2 class="text-xl md:text-2xl font-extrabold text-white mb-6">
+                        Proyectos Recientes
+                    </h2>
+
+                    <!-- Proyecto 1 -->
+                    <div class="space-y-3">
+                        <img class="w-full h-auto object-cover rounded-lg shadow-lg" 
+                             src="https://placehold.co/300x180/1C2629/00D6FF?text=Panel+Solar+Placeholder" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/300x180/1C2629/00D6FF?text=Panel+Solar+Placeholder';" 
+                             alt="Instalación de paneles solares">
+                        <div>
+                            <h4 class="text-base font-semibold text-white">Instalación de paneles solares en complejo industrial</h4>
+                            <p class="text-sm text-text-faded">Detalles del proyecto de energía solar</p>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="space-y-3">
+                        <img class="w-full h-auto object-cover rounded-lg shadow-lg" 
+                             src="fotos/see.jpg" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/300x180/1C2629/6E158C?text=Página+Web+Placeholder';" 
+                             alt="Diseño web">
+                        <div>
+                            <h4 class="text-base font-semibold text-white">Creación de página web para la empresa AyA</h4>
+                            <p class="text-sm text-text-faded">Detalles del proyecto de automatización</p>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-4 border-t border-gray-800 mt-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center px-4 sm:px-6 lg:px-8 text-text-faded text-sm space-y-3 md:space-y-0">
+            
+            <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 items-center">
+                <a href="#" class="hover:text-accent-primary transition">Política de Privacidad</a>
+                <span class="text-center">
+                    &copy; 2025 Tecnologia Electro. Todos los derechos reservados.
+                </span>
+            </div>
+
+            <!-- Iconos sociales -->
+            <div class="flex space-x-4">
+                <a href="#" aria-label="Twitter">
+                    <i data-lucide="twitter" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <i data-lucide="facebook" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+            </div>
+            
+        </div>
+    </footer>
+    
+    <!-- Script para inicializar los iconos de Lucide y la Lógica de Scroll -->
+    <script>
+        // Inicializa los iconos de Lucide
+        lucide.createIcons();
+
+        // Lógica de Animación de Scroll
+        window.onload = function () {
+            const heroContent = document.getElementById('hero-content');
+            const heroImage = document.getElementById('hero-image');
+            const mainContent = document.getElementById('main-content'); // Referencia al nuevo contenido
+            
+            if (!heroContent || !heroImage || !mainContent) return; // Salir si los elementos no existen
+
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const viewportHeight = window.innerHeight;
+
+                // Calculamos el progreso del scroll (0 cuando está arriba, 1 cuando ha bajado la altura de la pantalla)
+                // Usamos 0.8 para que la animación se complete antes de que la sección hero desaparezca completamente.
+                let progress = Math.min(1, scrollY / (viewportHeight * 0.8)); 
+
+                // 1. Desvanecer el contenido del Hero (título, texto, botones)
+                heroContent.style.opacity = 1 - progress;
+
+                // 2. Animación de la Imagen de Fondo (Paralaje y Desenfoque)
+                const scale = 1 + (progress * 0.1); 
+                const blur = progress * 5; // Máximo 5px de blur
+                
+                heroImage.style.transform = `scale(${scale})`;
+                heroImage.style.filter = `blur(${blur}px)`;
+                
+                // 3. APARECER el Contenido Principal (Fade In y Slide Up)
+                // La opacidad sube de 0 a 1
+                mainContent.style.opacity = progress;
+                // El elemento sube de 20px de desplazamiento a 0px
+                const translateY = 20 * (1 - progress); 
+                mainContent.style.transform = `translateY(${translateY}px)`;
+            });
+        };
+    </script>
+</body>
+</html>

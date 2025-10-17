@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologia Electro | Catálogo de Productos</title>
+    <!-- Carga de Tailwind CSS para el estilo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Incluyendo Lucide Icons para los elementos de las tarjetas, filtro y el logo -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Usando 'Inter' como la fuente predeterminada (similar a Space Grotesk) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0E1212; /* Color de fondo muy oscuro */
+            color: white;
+            overflow-x: hidden;
+            padding-top: 64px; /* Espacio para el Navbar fijo */
+        }
+
+        /* ---------------------------------- */
+        /* 1. Animación de Carga (Fade In Up) */
+        /* DURACIÓN: 1.5s para que se note bien */
+        /* ---------------------------------- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1.5s ease-out forwards;
+            opacity: 0; /* Asegura que no se vea antes de que empiece la animación */
+        }
+        
+        /* ---------------------------------- */
+        /* 2. Estilos de Tarjetas y Botones */
+        /* ---------------------------------- */
+        .card-product:hover {
+            box-shadow: 0 0 30px rgba(110, 21, 140, 0.7); /* Sombra púrpura al hover */
+            transform: translateY(-2px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .button-primary {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 224, 255, 0.4);
+        }
+        .button-primary:hover {
+            box-shadow: 0 8px 25px rgba(0, 224, 255, 0.6);
+            transform: translateY(-1px);
+        }
+
+        /* 3. Estilo para la imagen del producto (placehold.co) */
+        .product-image {
+            background-color: #16183B; /* Fondo interior de la tarjeta oscura */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#0E1212',
+                        'accent-primary': '#00E0FF', /* Azul Neon */
+                        'accent-secondary-purple': '#6E158C', /* Púrpura usado en el borde de la tarjeta de producto */
+                        'filter-bg': '#16183B', /* Azul oscuro para la barra de filtros */
+                        'text-faded': '#99B5BD',
+                        'button-primary-bg': '#00E0FF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar (Fijo y en la capa superior) -->
+    <header class="w-full fixed top-0 left-0 z-50 bg-bg-dark/95 backdrop-blur-sm border-b border-gray-700/50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2">
+                <!-- Se usa un icono más tecnológico para el logo -->
+                <i data-lucide="scan" class="w-5 h-5 text-accent-primary"></i>
+                <span class="text-lg font-extrabold text-white">Tecnologia Electro</span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="sericios.html" class="text-white hover:text-accent-primary transition">Servicios</a>
+                <a href="tienda.html" class="text-white hover:text-accent-primary transition">Tienda</a>
+                <a href="Sac.html" class="text-white hover:text-accent-primary transition">SAC</a>
+                <a href="nosotros.html" class="text-white hover:text-accent-primary transition">Nosotros</a>
+                <a href="contacto.html" class="text-white hover:text-accent-primary transition">Contacto</a>
+                <a href="clientes.html" class="text-white hover:text-accent-primary transition">Clientes</a>
+                <!-- Botón de Cotización -->
+                <a href="contacto.html" class="px-4 py-2 bg-accent-primary text-bg-dark font-bold text-sm rounded-lg shadow-lg hover:bg-accent-primary/90 transition duration-300">
+                    Solicitar Cotización
+                </a>
+            </nav>
+            <button class="md:hidden text-white">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full flex-grow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pt-16">
+            
+            <!-- Título Principal -->
+            <div class="animate-fade-in-up" style="animation-delay: 0.1s;">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-10">Catálogo de Productos</h1>
+            </div>
+
+            <!-- Contenedor Principal: Filtros y Productos -->
+            <div class="flex flex-col lg:flex-row gap-8">
+
+                <!-- ----------------------------------------- -->
+                <!-- COLUMNA DE FILTROS (IZQUIERDA) -->
+                <!-- ----------------------------------------- -->
+                <div id="filter-sidebar" class="w-full lg:w-80 p-6 rounded-xl border-2 border-accent-primary bg-filter-bg animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i data-lucide="filter" class="w-6 h-6 mr-2"></i>
+                        Filtrar por
+                    </h2>
+                    <div class="border-b border-white mb-6"></div>
+
+                    <!-- Categorías -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-white mb-3">Categorías</h3>
+                        <ul class="text-sm font-medium text-white space-y-2">
+                            <li><a href="#" class="hover:text-accent-primary underline transition">Cámaras (4)</a></li>
+                            <li><a href="#" class="hover:text-accent-primary transition">Calidad</a></li>
+                            <li><a href="#" class="hover:text-accent-primary underline transition">Accesorios (8)</a></li>
+                            <li><a href="#" class="hover:text-accent-primary transition">Software (1)</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Rango de Precio -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-white mb-3">Rango de Precio</h3>
+                        <ul class="text-sm font-medium text-white space-y-2">
+                            <li><label><input type="radio" name="price" class="mr-2 accent-accent-primary" checked> $0 - $50</label></li>
+                            <li><label><input type="radio" name="price" class="mr-2 accent-accent-primary"> $51 - $150</label></li>
+                            <li><label><input type="radio" name="price" class="mr-2 accent-accent-primary"> Más de $150</label></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Marca -->
+                    <div class="mb-10">
+                        <h3 class="text-xl font-bold text-white mb-3">Marca</h3>
+                        <div class="relative">
+                            <select class="w-full py-2 px-3 rounded bg-white text-black font-medium appearance-none cursor-pointer">
+                                <option>Todas</option>
+                                <option>Hikvision</option>
+                                <option>Otra Marca</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="w-4 h-4 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none text-black"></i>
+                        </div>
+                    </div>
+
+                    <!-- Botón Aplicar Filtros -->
+                    <button class="button-primary w-full py-3 bg-button-primary-bg text-black font-extrabold text-lg rounded-xl">
+                        Aplicar Filtros
+                    </button>
+                </div>
+
+                <!-- ----------------------------------------- -->
+                <!-- COLUMNA DE PRODUCTOS (DERECHA) -->
+                <!-- ----------------------------------------- -->
+                <div class="flex-grow">
+                    <!-- Conteo de Productos -->
+                    <div class="flex justify-between items-center mb-6 border-b border-white pb-3 animate-fade-in-up" style="animation-delay: 0.5s;">
+                        <h2 class="text-xl font-bold text-white">Mostrando 1 de 1 productos</h2>
+                        <!-- Espacio para la paginación o más opciones de vista si existieran -->
+                    </div>
+
+                    <!-- Grid de Productos (solo 1 para el ejemplo) -->
+                    <div class="grid grid-cols-1 gap-8">
+                        
+                        <!-- Tarjeta de Producto -->
+                        <div class="card-product p-6 rounded-2xl border-2 border-accent-secondary-purple bg-filter-bg overflow-hidden flex flex-col md:flex-row items-center animate-fade-in-up" style="animation-delay: 0.7s;">
+                            
+                            <!-- Columna Izquierda: Imagen del Producto -->
+                            <div class="w-full md:w-1/3 p-4 bg-gray-900 rounded-lg flex justify-center items-center mb-6 md:mb-0">
+                                <!-- Imagen de placeholder con un estilo de cámara -->
+                                <img src="fotos/camara tienda.jpg" alt="Cámara Hikvision" class="product-image max-w-full h-auto">
+                            </div>
+
+                            <!-- Columna Derecha: Detalles del Producto -->
+                            <div class="w-full md:w-2/3 md:pl-8 text-center md:text-left">
+                                <h3 class="text-3xl font-extrabold text-white mb-2">Cámara Hikvision-Turbo HD 5 MP</h3>
+                                <p class="text-base font-medium text-text-faded mb-6">
+                                    Bala 2.8mm EXIR 20m Metal IP67. La solución perfecta para vigilancia exterior de alta definición.
+                                </p>
+                                
+                                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                                    <p class="text-4xl font-extrabold text-white">$39.00</p>
+                                    
+                                    <!-- Botón Añadir al Carrito -->
+                                    <a href="tienda-camara.html" class="button-primary px-10 py-3 bg-button-primary-bg text-black font-extrabold text-xl rounded-xl flex items-center justify-center space-x-2">
+                                        <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                                        <span>Añadir al carrito</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-8 border-t border-gray-800 mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center px-4 sm:px-6 lg:px-8 text-text-faded text-sm space-y-3 md:space-y-0">
+            
+            <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8 items-center">
+                <a href="#" class="hover:text-accent-primary transition">Política de Privacidad</a>
+                <span class="text-center">
+                    &copy; 2025 Tecnologia Electro. Todos los derechos reservados.
+                </span>
+            </div>
+
+            <!-- Iconos sociales -->
+            <div class="flex space-x-4">
+                <a href="#" aria-label="Twitter">
+                    <i data-lucide="twitter" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <i data-lucide="facebook" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5 text-text-faded hover:text-accent-primary transition cursor-pointer"></i>
+                </a>
+            </div>
+            
+        </div>
+    </footer>
+    
+    <!-- Script para inicializar los iconos de Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

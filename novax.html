@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologia Electro - Novax Grupo S.A.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Generales */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0E1212;
+            font-family: 'Space Grotesk', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Animación de Entrada */
+        @keyframes slideInFromTop {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contenedor Principal (para la animación) */
+        .animated-content {
+            animation: slideInFromTop 1.5s ease-out forwards;
+        }
+
+        /* --- Barra de Navegación --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 40px;
+            border-bottom: 1px solid #E5E8EB;
+            position: relative;
+            z-index: 10;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .navbar-logo-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 36px;
+            margin-right: 32px;
+        }
+
+        .navbar-links a {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            line-height: 21px;
+            transition: color 0.3s;
+        }
+
+        .navbar-links a:hover {
+            color: #00D6FF;
+        }
+
+        .btn-cotizacion {
+            padding: 10px 16px;
+            background-color: #00D6FF;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-cotizacion:hover {
+            background-color: #00B1D1;
+        }
+
+        /* --- Contenido Principal --- */
+        .main-content {
+            padding: 40px;
+            max-width: 1360px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Título y Descripción */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .header-text {
+            max-width: 877px;
+        }
+
+        .header-title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 28px;
+            margin-bottom: 24px;
+        }
+
+        .header-description {
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            line-height: 35px;
+            padding-top: 4px;
+            padding-bottom: 12px;
+        }
+
+        /* Espacio de la Imagen */
+        .logo-container {
+            width: 415px;
+            height: 260px;
+            padding: 10px; /* Simula el padding que tenía el div en la imagen original */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 8px; /* Aunque la imagen lo cubra, mantiene la forma del contenedor */
+        }
+        
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Asegura que la imagen se vea completa sin cortarse */
+        }
+
+        /* Contenedor de las cajas de información */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        /* Estilo Base de las Cajas */
+        .info-box {
+            padding: 16px;
+            background: #1C2629;
+            border-radius: 8px;
+            height: 257px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            will-change: transform, box-shadow;
+        }
+
+        /* Estilos Específicos de Borde/Sombra */
+        .solution-box {
+            outline: 2px solid #00E0FF;
+            box-shadow: 0 0 0 0 rgba(0, 224, 255, 0.25) inset;
+        }
+
+        .challenge-box {
+            outline: 2px solid #00D6FF;
+            box-shadow: 0 0 0 0 rgba(0, 224, 255, 0.25);
+        }
+
+        .who-is-box {
+            outline: 2px solid #6E158C;
+            box-shadow: 0 0 0 0 rgba(0, 224, 255, 0.25);
+        }
+
+        .results-box {
+            outline: 2px solid #6E158C;
+            box-shadow: 0 0 0 0 rgba(0, 224, 255, 0.25);
+        }
+
+        /* Efecto Hover */
+        .info-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 224, 255, 0.4);
+        }
+
+        .info-title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 32px;
+            margin-bottom: 4px;
+            color: white;
+        }
+
+        .info-text {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 32px;
+            color: white;
+        }
+
+        /* --- Sección CTA (Call to Action) --- */
+        .cta-section {
+            text-align: center;
+            padding: 80px 40px;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 45px;
+            margin-bottom: 32px;
+        }
+
+        .btn-contactanos {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #00E0FF;
+            color: #0F1717;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-contactanos:hover {
+            background-color: #00B1D1;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 40px;
+            color: #99B5BD;
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .footer a {
+            color: #99B5BD;
+            text-decoration: none;
+            margin-right: 16px;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #00E0FF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-logo">
+            <div style="width: 16px; height: 16px; background-color: white;"></div>
+            <div class="navbar-logo-text">Tecnologia Electro</div>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <div class="navbar-links">
+                <a href="sericios.html">Servicios</a>
+                <a href="tienda.html">Tienda</a>
+                <a href="Sac.html">SAC</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="clientes.html">Clientes</a>
+            </div>
+            <a href="contacto.html" class="btn-cotizacion">Solicitar Cotización</a>
+        </div>
+    </div>
+
+    <div class="main-content animated-content">
+        <div class="header-section">
+            <div class="header-text">
+                <h1 class="header-title">Diseño e Instalación de una Red de Telecomunicaciones Privada de Alta Seguridad para Novax Grupo S.A.</h1>
+                <p class="header-description">Tecnología Electro se asoció con Ópticas Visión para reemplazar su sistema de videovigilancia obsoleto. El objetivo era implementar una solución de seguridad proactiva que no solo minimizara las pérdidas por robo, sino que también aportara inteligencia de datos sobre el flujo de clientes para optimizar la operación de la cadena de tiendas retail.</p>
+            </div>
+            <div class="logo-container">
+                <img src="fotos/novax.jpg" alt="Novax Group S.A. Logo">
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box solution-box">
+                <div style="color: #00E0FF; font-size: 24px;">🏠</div>
+                <p class="info-title">La Solución Implementada</p>
+                <p class="info-text">Se diseñó e implementó una red privada totalmente nueva, fortificada con múltiples capas de firewalls de última generación y VPNs internas para cifrado. La solución incluyó una arquitectura de **Zero Trust** y sistemas de detección de intrusos (**IDS**) basados en IA.</p>
+            </div>
+            <div class="info-box who-is-box">
+                <div style="color: #00E0FF; font-size: 24px;">👤</div>
+                <p class="info-title">Quién es Novax Grupo S.A.?</p>
+                <p class="info-text">Novax Grupo S.A. es una corporación regional que gestiona grandes volúmenes de datos sensibles y transacciones críticas. Su principal necesidad era una infraestructura de red robusta, escalable y aislada que garantizara la máxima **privacidad** y **cumplimiento normativo**.</p>
+            </div>
+
+            <div class="info-box challenge-box">
+                <div style="color: #00E0FF; font-size: 24px;">⚠️</div>
+                <p class="info-title">El Desafío</p>
+                <p class="info-text">La empresa operaba con una infraestructura de red pública que presentaba vulnerabilidades significativas a ataques externos y ralentización del tráfico interno. Novax necesitaba una solución de red de grado militar que ofreciera velocidad y, sobre todo, un **aislamiento total** de sus datos críticos.</p>
+            </div>
+            <div class="info-box results-box">
+                <div style="color: #00E0FF; font-size: 24px;">📈</div>
+                <p class="info-title">Resultados e Impacto</p>
+                <p class="info-text">La nueva red elevó la seguridad del grupo a niveles máximos, cumpliendo con todas las normativas de datos. Además, la optimización de la red privada resultó en un aumento del **60% en la velocidad** de transferencia de archivos pesados y una **reducción del 100% en incidentes de seguridad mayores**.</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 class="cta-title">¿Listo para transformar tu negocio?</h2>
+            <a href="contacto.html" class="btn-contactanos">Contactanos</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Política de Privacidad</div>
+        <div>© 2025 Tecnologia Electro. Todos los derechos reservados.</div>
+        <div>
+            <a href="#">Twitter</a>
+            <a href="#">Facebook</a>
+            <a href="#">LinkedIn</a>
+        </div>
+    </div>
+
+</body>
+</html>

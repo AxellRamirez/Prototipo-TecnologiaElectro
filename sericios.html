@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Tecnología Blindada</title>
+    <!-- Carga de Tailwind CSS para el estilo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Incluyendo Lucide Icons para los elementos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Usando 'Inter' como la fuente predeterminada y ajustando el fondo oscuro */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0E1212; /* Color de fondo muy oscuro */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Contenedor principal para simular el layout de 1440px */
+        #main-wrapper {
+            width: 1440px;
+            max-width: 100%;
+            padding: 0 50px;
+            box-sizing: border-box;
+        }
+
+        /* Colores de acento */
+        .text-neon { color: #00E0FF; }
+        .border-neon-blue { border-color: #00E0FF; }
+        .border-neon-purple { border-color: #6E158C; }
+        
+        /* ---------------------------------- */
+        /* 1. Animación de Carga (Fade In Up) */
+        /* ---------------------------------- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1.5s ease-out forwards;
+            opacity: 0; 
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.5s; }
+        .delay-4 { animation-delay: 0.7s; }
+        .delay-5 { animation-delay: 0.9s; }
+        .delay-6 { animation-delay: 1.1s; }
+
+        /* ---------------------------------- */
+        /* 2. Efecto Hover de Tamaño Dinámico */
+        /* ---------------------------------- */
+        .service-card {
+            /* Transición para el tamaño, sombra y color */
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth transition */
+            padding: 30px;
+            /* Empujar a la izquierda */
+            margin-left: 0; 
+            margin-right: auto; 
+        }
+
+        /* Tamaños base definidos */
+        /* Tarjeta GRANDE/AZUL (960px) - Crece en hover */
+        #card-camaras, #card-intrusion {
+            max-width: 960px; 
+        }
+        /* Tarjeta PEQUEÑA/MORADA (1120px - AUMENTADA) - Se encoge en hover */
+        #card-telecom, #card-electricidad, #card-ia {
+            max-width: 1120px; 
+        }
+        
+        /* Reglas de transformación al hacer hover */
+        .services-container:hover .service-card:not(:hover) {
+            /* Todas las tarjetas que NO tienen el cursor encima */
+            opacity: 0.6; /* Atenuar las otras */
+        }
+        
+        /* HOVER EN AZUL (960px -> 1200px) -- CRECE */
+        .services-container:hover #card-camaras:hover, 
+        .services-container:hover #card-intrusion:hover {
+            max-width: 1200px; /* Se hace más grande (más ancha) */
+            box-shadow: 0 0 40px rgba(0, 224, 255, 0.8); /* Sombra Neon Azul más intensa al crecer */
+        }
+        
+        /* HOVER EN MORADO (1120px -> 800px) -- SE ENCOGE */
+        .services-container:hover #card-telecom:hover, 
+        .services-container:hover #card-electricidad:hover, 
+        .services-container:hover #card-ia:hover {
+            max-width: 800px; /* Se hace más pequeña (más corta) */
+            box-shadow: 0 0 40px rgba(110, 21, 140, 0.5); /* Sombra Neon Púrpura al reducirse */
+        }
+
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#0E1212',
+                        'accent-blue': '#00E0FF',
+                        'accent-purple': '#6E158C',
+                        'text-faded': '#C4C4C4',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Contenedor Principal de 1440px -->
+    <div id="main-wrapper">
+
+        <!-- 1. Navbar -->
+        <header class="w-full h-[64px] border-b border-gray-700/50 bg-bg-dark/95 flex justify-between items-center px-10 z-50 animate-fade-in-up delay-1">
+            <div class="flex items-center space-x-4">
+                <i data-lucide="scan" class="w-5 h-5 text-accent-blue"></i>
+                <span class="text-lg font-extrabold text-white">Tecnologia Electro</span>
+            </div>
+            <nav class="flex items-center space-x-8 text-sm font-medium">
+                <a href="sericios.html" class="text-white hover:text-accent-primary transition">Servicios</a>
+                <a href="tienda.html" class="text-white hover:text-accent-primary transition">Tienda</a>
+                <a href="Sac.html" class="text-white hover:text-accent-primary transition">SAC</a>
+                <a href="nosotros.html" class="text-white hover:text-accent-primary transition">Nosotros</a>
+                <a href="contacto.html" class="text-white hover:text-accent-primary transition">Contacto</a>
+                <a href="clientes.html" class="text-white hover:text-accent-primary transition">Clientes</a>
+                <!-- Botón de Cotización -->
+                <a href="contacto.html" class="px-4 py-2 bg-accent-primary text-bg-dark font-bold text-sm rounded-lg shadow-lg hover:bg-accent-primary/90 transition duration-300">
+                    Solicitar Cotización
+                </a>
+            </nav>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="mt-16 w-full flex flex-col items-start"> 
+            
+            <!-- Bloque de Título y Subtítulo -->
+            <div class="text-center mb-16 w-full animate-fade-in-up delay-2">
+                <h1 class="text-5xl font-extrabold leading-tight mb-4 text-white">
+                    Tecnología <span class="text-neon">Blindada</span> y de <br/>Alto Rendimiento
+                </h1>
+                <p class="text-xl font-bold leading-relaxed text-white max-w-4xl mx-auto">
+                    Nuestros servicios están diseñados para garantizar la **continuidad del negocio** de su empresa, minimizando riesgos y optimizando cada recurso.
+                </p>
+                <a href="#" class="inline-block mt-4 px-6 py-2 bg-accent-blue text-bg-dark font-bold rounded-lg hover:bg-accent-blue/90 transition duration-300">
+                    Solicitar Cotización
+                </a>
+            </div>
+
+            <!-- Contenedor de Servicios con el efecto dinámico -->
+            <!-- Importante: items-start para alinear las cards a la izquierda -->
+            <div class="services-container flex flex-col items-start w-full space-y-8 pb-20 px-10">
+
+                <!-- 1. Cámaras con IA (BORDE AZUL - CRECE) -->
+                <div id="card-camaras" class="service-card large bg-black/30 border rounded-[30px] border-neon-blue animate-fade-in-up delay-3 cursor-pointer">
+                    <div class="flex gap-8 items-start">
+                        <!-- Icono -->
+                        <div class="flex-shrink-0 pt-4">
+                            <i data-lucide="video" class="w-12 h-12 text-accent-blue"></i>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="flex-grow">
+                            <p class="text-white text-lg font-bold mb-4">
+                                Implementamos sistemas de videovigilancia IP inteligentes con análisis de 
+                                video avanzado. No es solo grabar; es prevenir y optimizar la gestión de espacios.
+                            </p>
+                            <div class="grid grid-cols-2 gap-x-12 gap-y-2 mb-4">
+                                <div class="text-text-faded font-bold">Cámaras con IA (Reconocimiento Facial)</div>
+                                <div class="text-text-faded font-bold">Monitoreo Remoto Cifrado</div>
+                                <div class="text-text-faded font-bold">Grabación Redundante N+1</div>
+                                <div class="text-text-faded font-bold">Analíticas de Calor y Tráfico</div>
+                            </div>
+                            <a href="camaras.html" class="text-accent-blue text-base font-bold hover:underline transition">
+                                Ver Soluciones Relacionadas
+                            </a>
+                            <!-- COMENTARIO IMPORTANTE: Sustituye el href="#" con el link a tu documento HTML de Soluciones de Cámaras. -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Telecomunicaciones (BORDE MORADO - SE ENCOGE) -->
+                <div id="card-telecom" class="service-card small bg-black/30 border rounded-[30px] border-neon-purple animate-fade-in-up delay-4 cursor-pointer">
+                    <div class="flex gap-8 items-start">
+                        <!-- Icono -->
+                        <div class="flex-shrink-0 pt-4">
+                            <i data-lucide="router" class="w-12 h-12 text-accent-blue"></i>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="flex-grow">
+                            <p class="text-white text-lg font-bold mb-4">
+                                Diseñamos e instalamos redes privadas de alta disponibilidad y gran ancho de banda (Fibra Óptica), cruciales para operaciones que no toleran interrupciones.
+                            </p>
+                            <div class="grid grid-cols-2 gap-x-12 gap-y-2 mb-4">
+                                <div class="text-text-faded font-bold">Redes LAN/WAN de Fibra Óptica</div>
+                                <div class="text-text-faded font-bold">Blindaje Ciberseguro (Zero Trust)</div>
+                                <div class="text-text-faded font-bold">Sistemas de Voz y Datos Unificados</div>
+                                <div class="text-text-faded font-bold">Mantenimiento Preventivo 24/7</div>
+                            </div>
+                            <a href="telecomunicaciones.html" class="text-accent-blue text-base font-bold hover:underline transition">
+                                Ver Soluciones Relacionadas
+                            </a>
+                            <!-- COMENTARIO IMPORTANTE: Sustituye el href="#" con el link a tu documento HTML de Soluciones de Telecomunicaciones. -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Detección de Intrusión (BORDE AZUL - CRECE) -->
+                <div id="card-intrusion" class="service-card large bg-black/30 border rounded-[30px] border-neon-blue animate-fade-in-up delay-5 cursor-pointer">
+                    <div class="flex gap-8 items-start">
+                        <!-- Icono -->
+                        <div class="flex-shrink-0 pt-4">
+                            <i data-lucide="shield-half" class="w-12 h-12 text-accent-blue"></i>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="flex-grow">
+                            <p class="text-white text-lg font-bold mb-4">
+                                Ofrecemos soluciones discretas y avanzadas para la detección perimetral y el control de acceso, integradas a su infraestructura de seguridad.
+                            </p>
+                            <div class="grid grid-cols-2 gap-x-12 gap-y-2 mb-4">
+                                <div class="text-text-faded font-bold">Detección Perimetral Invisible</div>
+                                <div class="text-text-faded font-bold">Alarmas con Respuesta Automatizada</div>
+                                <div class="text-text-faded font-bold">Sistemas Biométricos Avanzados</div>
+                                <div class="text-text-faded font-bold">Integración Total con Video</div>
+                            </div>
+                            <a href="sistemasintru.html" class="text-accent-blue text-base font-bold hover:underline transition">
+                                Ver Soluciones Relacionadas
+                            </a>
+                            <!-- COMENTARIO IMPORTANTE: Sustituye el href="#" con el link a tu documento HTML de Soluciones de Intrusión. -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Sistemas Eléctricos (BORDE MORADO - SE ENCOGE) -->
+                <div id="card-electricidad" class="service-card small bg-black/30 border rounded-[30px] border-neon-purple animate-fade-in-up delay-6 cursor-pointer">
+                    <div class="flex gap-8 items-start">
+                        <!-- Icono -->
+                        <div class="flex-shrink-0 pt-4">
+                            <i data-lucide="zap" class="w-12 h-12 text-accent-blue"></i>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="flex-grow">
+                            <p class="text-white text-lg font-bold mb-4">
+                                Desde instalaciones de baja y media tensión hasta sistemas de iluminación LED de eficiencia energética, garantizamos la **calidad y cumplimiento normativo**.
+                            </p>
+                            <div class="grid grid-cols-2 gap-x-12 gap-y-2 mb-4">
+                                <div class="text-text-faded font-bold">Diseño y Montaje de Sistemas Eléctricos</div>
+                                <div class="text-text-faded font-bold">Paneles de Distribución Certificados</div>
+                                <div class="text-text-faded font-bold">Iluminación Inteligente y Ahorro Energético</div>
+                                <div class="text-text-faded font-bold">Mantenimiento Industrial</div>
+                            </div>
+                            <a href="electricidad.html" class="text-accent-blue text-base font-bold hover:underline transition">
+                                Ver Soluciones Relacionadas
+                            </a>
+                            <!-- COMENTARIO IMPORTANTE: Sustituye el href="#" con el link a tu documento HTML de Soluciones Eléctricas. -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 5. Inteligencia Operacional (BORDE MORADO - SE ENCOGE) - Agregando una quinta tarjeta para completar el set -->
+                 <div id="card-ia" class="service-card small bg-black/30 border rounded-[30px] border-neon-purple animate-fade-in-up delay-6 cursor-pointer">
+                    <div class="flex gap-8 items-start">
+                        <!-- Icono -->
+                        <div class="flex-shrink-0 pt-4">
+                            <i data-lucide="brain-circuit" class="w-12 h-12 text-accent-blue"></i>
+                        </div>
+                        
+                        <!-- Contenido -->
+                        <div class="flex-grow">
+                            <p class="text-white text-lg font-bold mb-4">
+                                Servicios de Inteligencia Operacional (Agentes IA) e Integración de Agentes Autónomos para transformar la monitorización y el mantenimiento predictivo.
+                            </p>
+                            <div class="grid grid-cols-2 gap-x-12 gap-y-2 mb-4">
+                                <div class="text-text-faded font-bold">IA Predictiva (IAP)</div>
+                                <div class="text-text-faded font-bold">IA de Flujos (IAF)</div>
+                                <div class="text-text-faded font-bold">Mejora de producción</div>
+                                <div class="text-text-faded font-bold">IA Ciberseguridad (IAC)</div>
+                            </div>
+                            <a href="ia..html" class="text-accent-blue text-base font-bold hover:underline transition">
+                                Ver Soluciones Relacionadas
+                            </a>
+                            <!-- COMENTARIO IMPORTANTE: Sustituye el href="#" con el link a tu documento HTML de Soluciones de Inteligencia Operacional. -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="w-full mt-auto py-4 border-t border-gray-700/50 flex justify-between items-center text-sm text-text-faded px-10 animate-fade-in-up delay-6">
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-accent-blue transition">Política de Privacidad</a>
+                <span class="text-gray-600">|</span>
+                <span>© 2025 Tecnologia Electro. Todos los derechos reservados.</span>
+            </div>
+            
+            <!-- Iconos Sociales -->
+            <div class="flex space-x-4">
+                <a href="#" aria-label="Twitter">
+                    <i data-lucide="twitter" class="w-5 h-5 text-text-faded hover:text-accent-blue transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <i data-lucide="facebook" class="w-5 h-5 text-text-faded hover:text-accent-blue transition cursor-pointer"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5 text-text-faded hover:text-accent-blue transition cursor-pointer"></i>
+                </a>
+            </div>
+        </footer>
+
+    </div>
+    
+    <!-- Script para inicializar los iconos de Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
