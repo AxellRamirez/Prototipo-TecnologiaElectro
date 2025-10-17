@@ -23,3 +23,24 @@ Menú Principal: Utilice la barra de navegación superior (Inicio, Tienda, Nosot
 Flujo de Tienda: Dentro de la vista de Catálogo, haga clic en el producto (la cámara) para ver el Detalle del Producto e interactuar con el simulador de compra.
 Servicios: Para ver los servicios que ofrece la empresa
 Contacto: Maneras de solicitar cotizaciones o comprar productos
+
+
+
+
+Descargar HTML
+Instala Git desde https://git-scm.com/downloads
+.
+
+Abre la terminal y verifica la instalación con git --version.
+
+Ve al repositorio de GitHub y copia la URL (HTTPS o SSH) del repositorio.
+
+Abre la terminal y navega a la carpeta donde quieras descargar los archivos con cd ruta/a/carpeta.
+
+Clona el repositorio usando git clone URL-del-repositorio.
+
+Abre VS Code.
+
+Desde VS Code, selecciona Archivo → Abrir carpeta y elige la carpeta del repositorio.
+
+Navega dentro de la carpeta en VS Code y abre los archivos HTML para editarlos.
